@@ -172,7 +172,7 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		}
-	}
+	},
 })
 
 --设置theme
@@ -209,16 +209,17 @@ require("lspconfig").lua_ls.setup {
 	}
 }
 
-require("lspconfig").dartls.setup {
-	capabilities = capabilities,
-}
-
 require("flutter-tools").setup {
 	flutter_path = 'C:\\Users\\Administrator\\flutter\\bin'
 }
 
 require 'lspconfig'.dartls.setup {
 	capabilities = capabilities,
+	filetypes = { 'dart' }
+}
+require 'lspconfig'.volar.setup {
+	capabilities = capabilities,
+	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -256,10 +257,16 @@ local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+local luasnip = require 'luasnip'
+
+luasnip.filetype_extend("vue", { "vue" })
+
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
+			--			require('luasnip').lsp_expand(args.body)
+			vim.fn["vsnip#anonymous"](args.body)
 		end,
 	},
 	mapping = {
@@ -305,10 +312,15 @@ cmp.setup({
 		['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
 		['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
 	},
-	sources = {
+	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-	},
+		{ name = 'vsnip' }, -- For vsnip users.
+		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'ultisnips' }, -- For ultisnips users.
+		{ name = 'snippy' }, -- For snippy users.
+	}, {
+		{ name = 'buffer' },
+	})
 })
 
 
