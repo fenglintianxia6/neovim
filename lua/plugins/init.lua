@@ -36,7 +36,8 @@ merge_plugins(
   require("plugins.lsp"),
   require("plugins.autopairs"),
   require("plugins.terminal"),
-  require("plugins.keymaps")
+  require("plugins.keymaps"),
+  require("plugins.statusline")
 )
 
 -- 设置插件

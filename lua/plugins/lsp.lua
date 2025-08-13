@@ -79,6 +79,148 @@ return {
         return "dart"
       end
 
+      -- 获取当前 FVM Flutter 版本
+      local function get_fvm_flutter_version()
+        local current_dir = vim.fn.getcwd()
+        local fvm_config_path = current_dir .. "/.fvm/flutter_sdk"
+        
+        -- 检查当前目录是否有 FVM 配置
+        if vim.fn.isdirectory(fvm_config_path) == 1 then
+          local version_file = fvm_config_path .. "/version"
+          if vim.fn.filereadable(version_file) == 1 then
+            local version = vim.fn.readfile(version_file)[1]
+            return version:gsub("%s+", "") -- 移除空白字符
+          end
+        end
+        
+        -- 向上查找父目录中的 FVM 配置
+        local parent_dir = current_dir
+        for i = 1, 10 do
+          parent_dir = vim.fn.fnamemodify(parent_dir, ":h")
+          if parent_dir == current_dir then
+            break
+          end
+          
+          local parent_fvm_path = parent_dir .. "/.fvm/flutter_sdk"
+          if vim.fn.isdirectory(parent_fvm_path) == 1 then
+            local version_file = parent_fvm_path .. "/version"
+            if vim.fn.filereadable(version_file) == 1 then
+              local version = vim.fn.readfile(version_file)[1]
+              return version:gsub("%s+", "")
+            end
+          end
+          current_dir = parent_dir
+        end
+        
+        -- 如果没有找到 FVM 配置，使用全局 FVM
+        local global_fvm_version = vim.fn.expand("$HOME/fvm/versions/3.27.2/version")
+        if vim.fn.filereadable(global_fvm_version) == 1 then
+          local version = vim.fn.readfile(global_fvm_version)[1]
+          return version:gsub("%s+", "")
+        end
+        
+        return "unknown"
+      end
+
+      -- 添加命令来显示当前 FVM Flutter 版本
+      vim.api.nvim_create_user_command('FVMVersion', function()
+        local version = get_fvm_flutter_version()
+        print("Current FVM Flutter version: " .. version)
+      end, {})
+
+      -- 获取当前 FVM Flutter 版本和来源信息
+      local function get_fvm_flutter_info()
+        local current_dir = vim.fn.getcwd()
+        local fvm_config_path = current_dir .. "/.fvm/flutter_sdk"
+        
+        -- 检查当前目录是否有 FVM 配置
+        if vim.fn.isdirectory(fvm_config_path) == 1 then
+          local version_file = fvm_config_path .. "/version"
+          if vim.fn.filereadable(version_file) == 1 then
+            local version = vim.fn.readfile(version_file)[1]
+            return {
+              version = version:gsub("%s+", ""),
+              source = "local",
+              path = fvm_config_path,
+              icon = "󰘧"
+            }
+          end
+        end
+        
+        -- 向上查找父目录中的 FVM 配置
+        local parent_dir = current_dir
+        for i = 1, 10 do
+          parent_dir = vim.fn.fnamemodify(parent_dir, ":h")
+          if parent_dir == current_dir then
+            break
+          end
+          
+          local parent_fvm_path = parent_dir .. "/.fvm/flutter_sdk"
+          if vim.fn.isdirectory(parent_fvm_path) == 1 then
+            local version_file = parent_fvm_path .. "/version"
+            if vim.fn.filereadable(version_file) == 1 then
+              local version = vim.fn.readfile(version_file)[1]
+              return {
+                version = version:gsub("%s+", ""),
+                source = "parent",
+                path = parent_fvm_path,
+                icon = "󰘧"
+              }
+            end
+          end
+          current_dir = parent_dir
+        end
+        
+        -- 如果没有找到 FVM 配置，使用全局 FVM
+        local global_fvm_version = vim.fn.expand("$HOME/fvm/versions/3.27.2/version")
+        if vim.fn.filereadable(global_fvm_version) == 1 then
+          local version = vim.fn.readfile(global_fvm_version)[1]
+          return {
+            version = version:gsub("%s+", ""),
+            source = "global_fvm",
+            path = vim.fn.expand("$HOME/fvm/versions/3.27.2"),
+            icon = "󰎚"
+          }
+        end
+        
+        -- 检查系统全局 Flutter
+        local system_flutter = vim.fn.executable("flutter")
+        if system_flutter == 1 then
+          return {
+            version = "system",
+            source = "system",
+            path = "system PATH",
+            icon = "󰎙"
+          }
+        end
+        
+        return nil
+      end
+
+      -- 添加命令来显示详细的 Flutter SDK 信息
+      vim.api.nvim_create_user_command('FlutterSDKInfo', function()
+        local info = get_fvm_flutter_info()
+        if info then
+          print("Flutter SDK Information:")
+          print("  Icon: " .. info.icon)
+          print("  Version: " .. info.version)
+          print("  Source: " .. info.source)
+          print("  Path: " .. info.path)
+          
+          if info.source == "local" then
+            print("  Status: Using local FVM SDK (project-specific)")
+          elseif info.source == "parent" then
+            print("  Status: Using parent directory FVM SDK")
+          elseif info.source == "global_fvm" then
+            print("  Status: Using global FVM SDK")
+          elseif info.source == "system" then
+            print("  Status: Using system Flutter (not FVM)")
+          end
+        else
+          print("No Flutter SDK found")
+        end
+      end, {})
+
       -- Dart/Flutter LSP 配置
       lspconfig.dartls.setup({
         on_attach = on_attach,
