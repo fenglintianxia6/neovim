@@ -36,19 +36,34 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>FD", "<cmd>FlutterDevTools<cr>", desc = "Open DevTools" },
     })
     
-          -- LSP 快捷键
+          -- 文件操作快捷键
+      wk.add({
+        { "<leader>f", name = "File & Format" },
+        { "<leader>ff", function()
+            vim.lsp.buf.format()
+            vim.cmd("write")
+          end, desc = "Format & Save" },
+        { "<leader>fs", "<cmd>write<cr>", desc = "Save File" },
+        { "<leader>fS", "<cmd>wall<cr>", desc = "Save All Files" },
+        { "<leader>fw", "<cmd>write<cr>", desc = "Write File" },
+        { "<leader>fq", "<cmd>wq<cr>", desc = "Save & Quit" },
+        { "<leader>fQ", "<cmd>wqall<cr>", desc = "Save All & Quit" },
+      })
+      
+      -- LSP 快捷键
       wk.add({
         { "<leader>l", name = "LSP" },
-        { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to Definition" },
-        { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", desc = "Go to Implementation" },
-        { "<leader>gr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "Show References" },
+        { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition (Float)" },
+        { "gD", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to Definition (Jump)" },
+        { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
+        { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
         { "K", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
         { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
         { "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
         { "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
         { "<leader>cf", "<cmd>lua vim.lsp.buf.code_action({only = {'quickfix'}})<cr>", desc = "Quick Fix" },
         { "<leader>cr", "<cmd>lua vim.lsp.buf.code_action({only = {'refactor'}})<cr>", desc = "Refactor" },
-        { "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", desc = "Format" },
+        { "<leader>lf", "<cmd>lua vim.lsp.buf.format()<cr>", desc = "Format Only" },
         { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Diagnostic" },
         { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
       })
@@ -65,8 +80,8 @@ vim.api.nvim_create_autocmd("User", {
         { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff This" },
         { "<leader>gD", "<cmd>Gitsigns diffthis ~<cr>", desc = "Diff This ~" },
         { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git Commits" },
-        { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Git Branches" },
-        { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+        { "<leader>gB", "<cmd>Telescope git_branches<cr>", desc = "Git Branches" },
+        { "<leader>gS", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
       })
   end,
 }) 
