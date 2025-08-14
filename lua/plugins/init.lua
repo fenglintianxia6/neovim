@@ -40,7 +40,8 @@ merge_plugins(
   require("plugins.statusline"),
   require("plugins.lazygit"),
   require("plugins.hop"),
-  require("plugins.autosave")
+  require("plugins.autosave"),
+  require("plugins.bufferline")
 )
 
 -- 设置插件

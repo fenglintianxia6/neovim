@@ -40,11 +40,11 @@ return {
       vim.keymap.set('n', 's', '<Cmd>HopChar2<CR>', opts) -- 搜索2个字符
       vim.keymap.set('n', 'S', '<Cmd>HopChar1<CR>', opts) -- 搜索1个字符
       
-      -- 多字符搜索功能
+      -- 多字符搜索功能（使用模式搜索替代）
       vim.keymap.set('n', '<leader>sc', '<Cmd>HopChar2<CR>', opts) -- 搜索2个字符
-      vim.keymap.set('n', '<leader>s3', '<Cmd>HopChar3<CR>', opts) -- 搜索3个字符
-      vim.keymap.set('n', '<leader>s4', '<Cmd>HopChar4<CR>', opts) -- 搜索4个字符
-      vim.keymap.set('n', '<leader>s5', '<Cmd>HopChar5<CR>', opts) -- 搜索5个字符
+      vim.keymap.set('n', '<leader>s3', '<Cmd>HopChar2<CR>', opts) -- 搜索2个字符（Hop 只支持1-2字符）
+      vim.keymap.set('n', '<leader>s4', '<Cmd>HopPattern<CR>', opts) -- 使用模式搜索4个字符
+      vim.keymap.set('n', '<leader>s5', '<Cmd>HopPattern<CR>', opts) -- 使用模式搜索5个字符
       
       -- 其他搜索模式
       vim.keymap.set('n', '<leader>hw', '<Cmd>HopWord<CR>', opts) -- 搜索单词
@@ -73,9 +73,9 @@ return {
         print("  s          - 搜索2个字符")
         print("  S          - 搜索1个字符")
         print("  <leader>sc - 搜索2个字符")
-        print("  <leader>s3 - 搜索3个字符")
-        print("  <leader>s4 - 搜索4个字符")
-        print("  <leader>s5 - 搜索5个字符")
+        print("  <leader>s3 - 搜索2个字符（Hop 只支持1-2字符）")
+        print("  <leader>s4 - 搜索4个字符（使用模式搜索）")
+        print("  <leader>s5 - 搜索5个字符（使用模式搜索）")
         print("  <leader>hp - 搜索模式（支持正则表达式）")
         print("  <leader>hw - 搜索单词")
         print("  <leader>hl - 搜索行")

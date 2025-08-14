@@ -150,8 +150,9 @@ return {
         print("自动保存状态: " .. status)
       end, {})
 
+      -- 移除有问题的状态栏显示代码
       -- 在状态栏显示自动保存状态
-      vim.opt.statusline = vim.opt.statusline .. "%{v:lua.require('auto-save').opts.enabled ? ' [AutoSave]' : ''}"
+      -- vim.opt.statusline = vim.opt.statusline .. "%{v:lua.require('auto-save').opts.enabled ? ' [AutoSave]' : ''}"
     end,
   },
 } 
