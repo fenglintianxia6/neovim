@@ -38,7 +38,9 @@ merge_plugins(
   require("plugins.terminal"),
   require("plugins.keymaps"),
   require("plugins.statusline"),
-  require("plugins.lazygit")
+  require("plugins.lazygit"),
+  require("plugins.hop"),
+  require("plugins.autosave")
 )
 
 -- 设置插件

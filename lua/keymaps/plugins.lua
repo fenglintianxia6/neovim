@@ -13,11 +13,11 @@ vim.api.nvim_create_autocmd("User", {
     wk.add({
       { "<leader>t", name = "Telescope" },
       { "gf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-      { "<leader>tg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+      { "<leader>ts", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
       { "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
       { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
       { "gr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
-      { "<leader>ts", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
+      { "<leader>tg", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
     })
     
     -- Flutter 快捷键
@@ -27,11 +27,11 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>Fq", "<cmd>FlutterQuit<cr>", desc = "Quit Flutter App" },
       { "<leader>Fh", "<cmd>FlutterReload<cr>", desc = "Hot Reload" },
       { "<leader>FR", "<cmd>FlutterRestart<cr>", desc = "Hot Restart" },
-      { "<leader>Fl", "<cmd>FlutterLogClear<cr>", desc = "Show Logs" },
+      { "<leader>Fc", "<cmd>FlutterLogClear<cr>", desc = "Show Logs" },
       { "<leader>Fd", "<cmd>FlutterDevices<cr>", desc = "Show Devices" },
       { "<leader>Fo", "<cmd>FlutterOutline<cr>", desc = "Show Outline" },
       { "<leader>Fs", "<cmd>FlutterSuper<cr>", desc = "Super" },
-      { "<leader>Fc", "<cmd>FlutterCopyProfilerUrl<cr>", desc = "Copy Profiler URL" },
+      { "<leader>Fp", "<cmd>FlutterCopyProfilerUrl<cr>", desc = "Copy Profiler URL" },
       { "<leader>Ft", "<cmd>FlutterTest<cr>", desc = "Run Tests" },
       { "<leader>FD", "<cmd>FlutterDevTools<cr>", desc = "Open DevTools" },
     })

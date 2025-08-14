@@ -1,6 +1,7 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
+    version = "*", -- 使用最新稳定版本
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "echasnovski/mini.icons",
