@@ -41,7 +41,13 @@ merge_plugins(
   require("plugins.lazygit"),
   require("plugins.hop"),
   require("plugins.autosave"),
-  require("plugins.bufferline")
+  require("plugins.bufferline"),
+  require("plugins.copilot"),
+  require("plugins.flutter-bloc"),
+  require("plugins.ai-code-companion"),
+  require("plugins.surround"),
+  require("plugins.vim-bufkill"),
+  require("plugins.markview")
 )
 
 -- 设置插件

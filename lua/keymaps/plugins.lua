@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>Fo", "<cmd>FlutterOutline<cr>", desc = "Show Outline" },
       { "<leader>Fs", "<cmd>FlutterSuper<cr>", desc = "Super" },
       { "<leader>Fp", "<cmd>FlutterCopyProfilerUrl<cr>", desc = "Copy Profiler URL" },
-      { "<leader>Ft", "<cmd>FlutterTest<cr>", desc = "Run Tests" },
+      { "<leader>Ft", "<cmd>FlutterLogToggle<cr>", desc = "FlutterLogToggle" },
       { "<leader>FD", "<cmd>FlutterDevTools<cr>", desc = "Open DevTools" },
     })
     

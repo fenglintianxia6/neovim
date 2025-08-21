@@ -1,0 +1,7 @@
+return {
+
+    {
+        "qpkorr/vim-bufkill"
+    }
+
+}

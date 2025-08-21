@@ -11,6 +11,8 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
+     
+    "zbirenbaum/copilot-cmp", -- 新增
     },
     config = function()
       local cmp = require("cmp")
@@ -56,6 +58,7 @@ return {
           end, { "i", "s" }),
         },
         sources = {
+            {name = "copilot", group_index = 2}, -- 新增
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -65,6 +68,7 @@ return {
           format = function(entry, vim_item)
             vim_item.kind = string.format("%s %s", require("lspkind").presets.default[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
+                copilot = "[Copilot]", -- 新增
               nvim_lsp = "[LSP]",
               luasnip = "[Snippet]",
               buffer = "[Buffer]",

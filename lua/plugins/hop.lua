@@ -59,13 +59,7 @@ return {
       vim.keymap.set('n', '<leader>hm', '<Cmd>HopChar2Multi<CR>', opts) -- 多窗口搜索字符
       vim.keymap.set('n', '<leader>hwm', '<Cmd>HopWordMulti<CR>', opts) -- 多窗口搜索单词
       
-      -- 可视模式搜索
-      vim.keymap.set('v', 's', '<Cmd>HopChar2<CR>', opts)
-      vim.keymap.set('v', 'S', '<Cmd>HopChar1<CR>', opts)
       
-      -- 操作模式搜索
-      vim.keymap.set('o', 's', '<Cmd>HopChar2<CR>', opts)
-      vim.keymap.set('o', 'S', '<Cmd>HopChar1<CR>', opts)
       
       -- 添加说明注释
       vim.api.nvim_create_user_command('HopHelp', function()

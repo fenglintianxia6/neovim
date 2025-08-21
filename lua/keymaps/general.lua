@@ -40,3 +40,14 @@ keymap("n", "<", "<cmd>bp<cr>", { desc = "Previous Buffer" })
 -- Visual 模式
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts) 
+
+
+vim.api.nvim_set_keymap('i', '<C-l>', 'copilot#Accept("")', {
+    noremap = true,
+    silent = true,
+    expr = true,
+    replace_keycodes = false
+})
+
+keymap("n", "<leader>cc", ":BD<cr>", { desc = "Toggle Copilot" })
+
