@@ -51,3 +51,4 @@ vim.api.nvim_set_keymap('i', '<C-l>', 'copilot#Accept("")', {
 
 keymap("n", "<leader>cc", ":BD<cr>", { desc = "Toggle Copilot" })
 
+

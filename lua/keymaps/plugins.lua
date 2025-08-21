@@ -18,6 +18,15 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
       { "gr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
       { "<leader>tg", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    })
+
+    wk.add({
+        { "lgd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition (Float)" },
+        { "lgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
+        { "lgr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
+        { "lK", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
+        { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
     })
     
     -- Flutter 快捷键
@@ -54,7 +63,6 @@ vim.api.nvim_create_autocmd("User", {
       wk.add({
         { "<leader>l", name = "LSP" },
         { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition (Float)" },
-        { "gD", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go to Definition (Jump)" },
         { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
         { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
         { "K", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
@@ -68,20 +76,5 @@ vim.api.nvim_create_autocmd("User", {
         { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
       })
       
-      -- Git 快捷键
-      wk.add({
-        { "<leader>g", name = "Git" },
-        { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-        { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk" },
-        { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo Stage Hunk" },
-        { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
-        { "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
-        { "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle Line Blame" },
-        { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff This" },
-        { "<leader>gD", "<cmd>Gitsigns diffthis ~<cr>", desc = "Diff This ~" },
-        { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git Commits" },
-        { "<leader>gB", "<cmd>Telescope git_branches<cr>", desc = "Git Branches" },
-        { "<leader>gS", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
-      })
   end,
 }) 

@@ -31,3 +31,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 
+vim.api.nvim_del_keymap('n', 'gri')
+vim.api.nvim_del_keymap('n', 'grr')
+vim.api.nvim_del_keymap('n', 'gra')
+vim.api.nvim_del_keymap('n', 'grn')
