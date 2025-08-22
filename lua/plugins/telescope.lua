@@ -4,6 +4,8 @@ return {
     tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
+              require("telescope").load_extension("flutter")
+
       require('telescope').setup({
         defaults = {
           file_ignore_patterns = { "node_modules", "build", "dist" },
@@ -13,7 +15,22 @@ return {
               ["<C-k>"] = require('telescope.actions').move_selection_previous,
             }
           }
-        }
+        },
+        pickers = {
+            colorscheme = {
+              enable_preview = true,
+            },
+          find_files = {
+            theme = "dropdown",
+            hidden = true,
+          },
+          live_grep = {
+            theme = "dropdown",
+          },
+          buffers = {
+            theme = "dropdown",
+          },
+        },
       })
     end
   }

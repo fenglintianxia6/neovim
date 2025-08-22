@@ -2,7 +2,7 @@ return {
   -- Hop.nvim - 快速跳转和搜索插件
   {
     "phaazon/hop.nvim",
-    branch = "v2",
+    branch = 'v2', -- 使用 v2 分支以获得更好的多字符支持
     config = function()
       local ok, hop = pcall(require, 'hop')
       if not ok then
@@ -16,7 +16,7 @@ return {
         char2_fallback_key = '<CR>',
         multi_windows = true,
         jump_on_sole_occurrence = false,
-        create_hl_autocmd = false,
+        create_hl_autocmd = true,
         uppercase_labels = false,
         current_line_only = false,
         hint_position = require 'hop.hint'.HintPosition.END,

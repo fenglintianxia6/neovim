@@ -13,26 +13,6 @@ return {
       -- 通用 LSP 设置
       local function on_attach(client, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-        
-        -- LSP 快捷键
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-        
-        -- 显示诊断信息
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-        vim.keymap.set('n', 'K', vim.diagnostic.open_float, opts)
-        
-        -- 自动修复快捷键
-        vim.keymap.set('n', '<leader>cf', function()
-          vim.lsp.buf.code_action({ only = { 'quickfix' } })
-        end, opts)
-        
-        vim.keymap.set('n', '<leader>cr', function()
-          vim.lsp.buf.code_action({ only = { 'refactor' } })
-        end, opts)
       end
 
       -- 获取 FVM 的 Dart 路径
@@ -229,7 +209,7 @@ return {
               vim.fn.expand("$HOME/.pub-cache"),
               vim.fn.expand("$HOME/.fvm"),
             },
-            lineLength = 160,
+            lineLength = 200,
             enableSdkFormatter = true,
             enableSnippets = true,
             showTodos = true,

@@ -48,6 +48,10 @@ return {
           border = "rounded",
         },
         flutter_path = get_fvm_flutter_path(),
+        blocs = {
+            enabled = true,
+            code_actions = true, 
+        }
       })
     end
   }

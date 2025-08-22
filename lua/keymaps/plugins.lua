@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
       { "gr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files" },
       { "<leader>tg", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }, 
     })
 
     wk.add({
@@ -27,6 +27,8 @@ vim.api.nvim_create_autocmd("User", {
         { "lgr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
         { "lK", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
         { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+        {";ej","<cmd>Telescope diagnostics<cr>", desc = "Show Diagnostics"},
+        {";ek","<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Show Buffer Diagnostics"},
     })
     
     -- Flutter 快捷键
@@ -38,7 +40,7 @@ vim.api.nvim_create_autocmd("User", {
       { "<leader>FR", "<cmd>FlutterRestart<cr>", desc = "Hot Restart" },
       { "<leader>Fc", "<cmd>FlutterLogClear<cr>", desc = "Show Logs" },
       { "<leader>Fd", "<cmd>FlutterDevices<cr>", desc = "Show Devices" },
-      { "<leader>Fo", "<cmd>FlutterOutline<cr>", desc = "Show Outline" },
+      { "<leader>Fo", "<cmd>FlutterOutlineToggle<cr>", desc = "Show Outline" },
       { "<leader>Fs", "<cmd>FlutterSuper<cr>", desc = "Super" },
       { "<leader>Fp", "<cmd>FlutterCopyProfilerUrl<cr>", desc = "Copy Profiler URL" },
       { "<leader>Ft", "<cmd>FlutterLogToggle<cr>", desc = "FlutterLogToggle" },
@@ -72,8 +74,6 @@ vim.api.nvim_create_autocmd("User", {
         { "<leader>cf", "<cmd>lua vim.lsp.buf.code_action({only = {'quickfix'}})<cr>", desc = "Quick Fix" },
         { "<leader>cr", "<cmd>lua vim.lsp.buf.code_action({only = {'refactor'}})<cr>", desc = "Refactor" },
         { "<leader>lf", "<cmd>lua vim.lsp.buf.format()<cr>", desc = "Format Only" },
-        { "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Previous Diagnostic" },
-        { "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
       })
       
   end,

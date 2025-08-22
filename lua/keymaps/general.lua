@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 keymap("n","<leader>w", "<cmd>w<cr>", { desc = "Save File" })
-keymap("n","<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+keymap("n","<leader>q", ":BD<cr>", { desc = "Quit" })
 
 -- 窗口管理（这些不依赖插件，可以立即设置）
 keymap("n", "<C-h>", "<C-w>h", opts)
