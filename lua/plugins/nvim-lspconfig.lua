@@ -10,11 +10,6 @@ return {
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      -- 通用 LSP 设置
-      local function on_attach(client, bufnr)
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-      end
-
       -- 获取 FVM 的 Dart 路径
       local function get_fvm_dart_path()
         local current_dir = vim.fn.getcwd()
@@ -197,31 +192,6 @@ return {
           print("No Flutter SDK found")
         end
       end, {})
-
-      -- Dart/Flutter LSP 配置
-      lspconfig.dartls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        cmd = { get_fvm_dart_path(), "language-server", "--protocol=lsp" },
-        settings = {
-          dart = {
-            analysisExcludedFolders = {
-              vim.fn.expand("$HOME/.pub-cache"),
-              vim.fn.expand("$HOME/.fvm"),
-            },
-            lineLength = 200,
-            enableSdkFormatter = true,
-            enableSnippets = true,
-            showTodos = true,
-            completeFunctionCalls = true,
-          },
-        },
-        init_options = {
-          -- 自动导入
-          onlyAnalyzeProjectsWithOpenFiles = false,
-          suggestFromUnimportedLibraries = true,
-        },
-      })
 
       -- 设置诊断显示
       vim.diagnostic.config({
