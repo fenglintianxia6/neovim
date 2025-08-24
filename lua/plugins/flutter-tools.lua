@@ -15,6 +15,11 @@ return {
         },
         fvm = true,
         lsp = {
+          on_attach = function(client, bufnr)
+            -- 确保这些映射存在
+            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = 'Code Action' })
+          end,
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
             settings = {
               analysisExcludedFolders = {
                 vim.fn.expand("$HOME/.pub-cache"),
@@ -34,5 +39,18 @@ return {
         }
       })
     end
-  }
+  },
+
+  -- Flutter Bloc boilerplate generator
+  {
+    'wa11breaker/flutter-bloc.nvim',
+    dependencies = { 'nvimtools/none-ls.nvim' },
+    config = function()
+        require('flutter-bloc').setup({
+            bloc_type = 'default',
+            use_sealed_classes = false,
+            enable_code_actions = true,
+        })
+    end,
+}
 } 
