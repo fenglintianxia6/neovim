@@ -44,13 +44,11 @@ merge_plugins(
   require("plugins.hop"),
   require("plugins.auto-save"),
   require("plugins.bufferline"),
-  -- require("plugins.copilot"),
-  -- require("plugins.coc"),
-  -- require("plugins.flutter-bloc"),
   require("plugins.codecompanion"),
   require("plugins.surround"),
   require("plugins.vim-bufkill"),
-  require("plugins.null-ls")
+  require("plugins.null-ls"),
+  -- require("plugins.fittencode")
 )
 
 -- 设置插件
