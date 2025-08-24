@@ -30,6 +30,7 @@ merge_plugins(
   require("plugins.colorscheme"),
   require("plugins.flutter-tools"),
   require("plugins.nvim-tree"),
+  require("plugins.nvim-treesitter"),
   require("plugins.telescope"),
   require("plugins.nvim-cmp"),
   require("plugins.lua_snip"),
@@ -48,8 +49,8 @@ merge_plugins(
   require("plugins.codecompanion"),
   require("plugins.surround"),
   require("plugins.vim-bufkill"),
-  require("plugins.markview")
-  -- require("plugins.null-ls")
+  require("plugins.markview"),
+  require("plugins.null-ls")
 )
 
 -- 设置插件
