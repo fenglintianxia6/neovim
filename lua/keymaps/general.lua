@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 keymap("n","<leader>w", "<cmd>w<cr>", { desc = "Save File" })
-keymap("n","<leader>q", ":BD<cr>", { desc = "Quit" })
+keymap("n","<leader>q", ":q<cr>", { desc = "Quit" })
 
 -- 窗口管理（这些不依赖插件，可以立即设置）
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -51,4 +51,13 @@ vim.api.nvim_set_keymap('i', '<C-l>', 'copilot#Accept("")', {
 
 keymap("n", "<leader>cc", ":BD<cr>", { desc = "Toggle Copilot" })
 
+
+keymap("n", "<leader>cc", function()
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+  if #buffers <= 1 then
+    vim.cmd("qa")
+  else
+    vim.cmd("BD")
+  end
+end, { desc = "Close Buffer or Quit if Last" })
 

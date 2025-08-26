@@ -28,7 +28,7 @@ end
 -- 加载所有插件配置
 merge_plugins(
   require("plugins.colorscheme"),
-  require("plugins.markview"),
+--  require("plugins.markview"),
   require("plugins.flutter-tools"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
@@ -47,7 +47,7 @@ merge_plugins(
   require("plugins.codecompanion"),
   require("plugins.surround"),
   require("plugins.vim-bufkill"),
-  require("plugins.null-ls"),
+  require("plugins.null-ls")
   -- require("plugins.fittencode")
 )
 
