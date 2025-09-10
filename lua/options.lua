@@ -35,3 +35,5 @@ vim.api.nvim_del_keymap('n', 'gri')
 vim.api.nvim_del_keymap('n', 'grr')
 vim.api.nvim_del_keymap('n', 'gra')
 vim.api.nvim_del_keymap('n', 'grn')
+
+vim.opt.indentexpr = ""

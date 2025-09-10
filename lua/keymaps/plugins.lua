@@ -22,10 +22,10 @@ vim.api.nvim_create_autocmd("User", {
     })
 
     wk.add({
-        { "lgd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition (Float)" },
-        { "lgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
-        { "lgr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
-        { "lK", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
+        { "cgd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to Definition (Float)" },
+        { "cgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to Implementation" },
+        { "cgr", "<cmd>Telescope lsp_references<cr>", desc = "Show References" },
+        { "cK", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostic" },
         { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
         {";ej","<cmd>Telescope diagnostics<cr>", desc = "Show Diagnostics"},
         {";ek","<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Show Buffer Diagnostics"},

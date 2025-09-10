@@ -11,7 +11,7 @@ return {
         },
         -- 启用缩进
         indent = {
-          enable = true,
+          enable = false,
         },
         -- 启用增量选择
         incremental_selection = {

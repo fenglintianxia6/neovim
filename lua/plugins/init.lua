@@ -28,6 +28,7 @@ end
 -- 加载所有插件配置
 merge_plugins(
   require("plugins.colorscheme"),
+  -- require("plugins.coc"),
 --  require("plugins.markview"),
   require("plugins.flutter-tools"),
   require("plugins.nvim-tree"),

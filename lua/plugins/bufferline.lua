@@ -17,20 +17,17 @@ return {
           mode = "buffers", -- 设置为 buffers 模式
           separator_style = "slant", -- 分隔符样式
           always_show_bufferline = true, -- 始终显示 bufferline
-          show_buffer_close_icons = true, -- 显示关闭按钮
+          show_buffer_close_icons = false, -- 显示关闭按钮
           show_close_icon = true,
           show_tab_indicators = true,
           show_duplicate_prefix = true,
           tab_size = 18,
           max_name_length = 18,
           max_prefix_length = 15,
-          diagnostics = "nvim_lsp", -- 显示 LSP 诊断
+          diagnostics = "false", -- 显示 LSP 诊断
           diagnostics_indicator = function(_, _, _)
             local icons = {
-              Error = " ",
-              Warn = " ",
-              Hint = " ",
-              Info = " ",
+              Error = " ", Warn = " ", Hint = " ", Info = " ",
             }
             local ret = {}
             
