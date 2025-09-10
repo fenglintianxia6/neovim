@@ -1,0 +1,62 @@
+set clipboard+=unnamed
+
+let mapleader=","
+set showmode 
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set scrolloff=20
+set number
+set relativenumber
+
+set highlightedyank
+let g:highlightedyank_highlight_duration = "600"
+
+
+
+nnoremap gr :action RecentFiles<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gf :action GotoFile<CR>
+nnoremap ;ej :action GotoNextError<CR>
+nnoremap ;ek :action GotoPreviousError<CR>
+
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>d :action Debug<CR>
+nnoremap <Leader>sd :action Flutter.DeviceSelector<CR>
+nnoremap <leader>ts :action Stop<CR>
+nnoremap <leader>b :action ToggleAction<CR>
+
+nnoremap <leader>h :noh<CR>
+nmap <Leader>gh <Action>(ShowErrorDescription)
+nmap <Leader>j <Action>(FileStructurePopup)
+nmap <Leader>e <Action>(SelectInProjectView)
+nmap <Leader>z <Action>(ToggleZenMode)
+nmap <Leader>q :q<CR>
+nmap <Leader>w :w<CR>
+nmap > <Action>(NextTab)
+nmap < <Action>(PreviousTab)
+nmap <Leader>c <Action>(CloseContent)
+nmap <Leader>C <Action>(CloseAllEditorsButActive)
+nmap <Leader>Cu <Action>(CloseAllUnmodifiedEditors)
+nmap <Leader>i <Action>(OptimizeImports)
+map 0 ^
+
+
+
+
+vmap * "ry/<C-R>r<CR>
+set surround
+
+"快速定位
+set easymotion
+" 单字符跳转
+nmap ss <Plug>(easymotion-sn)  
+
+set argtextobj
+
+set NERDTree
+
+set which-key
+set notimeout
+
